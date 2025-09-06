@@ -6,11 +6,11 @@ import pickle
 # TODO: Load the trained model from 'model.pkl' using pickle
 model = None
 scaler = None
-with open('model.pkl','rb') as f:
+with open('./Model/model.pkl','rb') as f:
     model = pickle.load(f)
 
 # TODO: Load the scaler from 'scaler.pkl' using pickle
-with open('scaler.pkl','rb') as f:
+with open('./Model/scaler.pkl','rb') as f:
     scaler = pickle.load(f)
 
 
