@@ -3,13 +3,11 @@ import pandas as pd
 import pickle
 
 # Load model and scaler
-# TODO: Load the trained model from 'model.pkl' using pickle
 model = None
 scaler = None
 with open('./Model/model.pkl','rb') as f:
     model = pickle.load(f)
 
-# TODO: Load the scaler from 'scaler.pkl' using pickle
 with open('./Model/scaler.pkl','rb') as f:
     scaler = pickle.load(f)
 
@@ -22,7 +20,6 @@ def predict():
     prediction_proba = None
     
     if request.method == 'POST':
-        # TODO: Retrieve input values from the form (geography, gender, age, balance, credit_score, estimated_salary, tenure, num_of_products, has_cr_card, is_active_member)
         geography = request.form.get('geography')
         gender = request.form.get('gender')
         age = float(request.form.get('age'))
@@ -33,7 +30,6 @@ def predict():
         num_of_products = float(request.form.get('num_of_products'))
         has_cr_card = float(request.form.get('has_cr_card'))
         is_active_member = float(request.form.get('is_active_member'))
-        # TODO: Create a pandas DataFrame with the input values matching the training feature columns
         if geography == 'France':
             geography_germany = 0
             geography_spain = 0
@@ -60,11 +56,7 @@ def predict():
             'Geography_Spain' : [geography_spain],
             'Gender_Male' : [gender_male],
         })
-        # TODO: Ensure the columns are ordered in the same way as the model expects
-     
-        # TODO: Scale the input using the loaded scaler
         X_input_scaled = scaler.transform(X_input)
-        # TODO: Use the loaded model to predict and get the probability
         prediction = model.predict(X_input_scaled)[0]
         prediction_proba = model.predict_proba(X_input_scaled)[0][1]
         prediction = int(prediction)

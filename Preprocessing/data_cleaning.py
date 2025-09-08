@@ -3,26 +3,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 def remove_irrelevant_columns(df):
-    """
-    Remove columns RowNumber, CustomerId, Surname from the dataframe.
-    """
-    # TODO: Drop the irrelevant columns and return the modified dataframe
     df.drop(columns=['RowNumber','CustomerId','Surname'] , inplace = True)
     return df
 
 def encode_categorical(df):
-    """
-    Encode categorical columns (Geography, Gender) using one-hot encoding.
-    """
-    # TODO: Use one-hot encoding to convert the categorical columns into numeric form
     df = pd.get_dummies( df, columns=['Geography', 'Gender'], dtype=int ,drop_first=False )
     return df
 
 def split_data(df, test_size=0.2, random_state=42):
-    """
-    Split the dataset into features (X) and target (y), then into training and test sets.
-    """
-    # TODO: Separate 'Exited' column as target and split data into X_train, X_test, y_train, y_test
     X = df.drop("Exited", axis=1)   # all columns except target
     y = df["Exited"]
     X_train, X_test, y_train, y_test = train_test_split(
@@ -34,10 +22,6 @@ def split_data(df, test_size=0.2, random_state=42):
     return X_train, X_test, y_train, y_test
 
 def scale_features(X_train, X_test):
-    """
-    Scale numerical features in X_train and X_test using StandardScaler.
-    """
-    # TODO: Fit a StandardScaler on X_train and transform X_train and X_test. Return the scaled data and the scaler.
     scaler = StandardScaler()
     scaler.fit(X_train)
     X_train_scaled = scaler.transform(X_train)
