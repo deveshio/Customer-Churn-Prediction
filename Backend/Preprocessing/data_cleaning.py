@@ -29,7 +29,7 @@ def scale_features(X_train, X_test):
     return X_train_scaled, X_test_scaled, scaler
 
 if __name__ == "__main__":
-    df = pd.read_csv('Churn_Modelling.csv')
+    df = pd.read_csv('../Data/Churn_Modelling.csv')
     df = remove_irrelevant_columns(df)
     df = encode_categorical(df)
     X_train, X_test, y_train, y_test = split_data(df)
