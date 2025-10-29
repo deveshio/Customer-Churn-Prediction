@@ -66,7 +66,7 @@ function App() {
 
     try {
       // 2. Send the request to the Flask API
-      const response = await fetch('http://127.0.0.1:3000/predict', {
+      const response = await fetch('https://customer-churn-prediction-flask-backend.onrender.com/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
