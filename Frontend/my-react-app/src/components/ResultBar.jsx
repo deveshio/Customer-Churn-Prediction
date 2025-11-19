@@ -1,11 +1,7 @@
-import React from 'react';
-
-// A helper component for displaying the results with a progress bar
 function ResultBar({ modelName, probability }) {
   const percentage = (probability * 100).toFixed(1);
   const isHighRisk = probability > 0.5;
 
-  // Change color based on risk
   const barColor = isHighRisk ? 'bg-red-500' : 'bg-green-500';
   const textColor = isHighRisk ? 'text-red-700' : 'text-green-700';
 
@@ -26,4 +22,3 @@ function ResultBar({ modelName, probability }) {
 }
 
 export default ResultBar;
-
